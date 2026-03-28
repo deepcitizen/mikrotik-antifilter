@@ -1,0 +1,155 @@
+name: Build and Release Antifilter RSC
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */4 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: antifilter-release
+  cancel-in-progress: false
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    env:
+      COMMUNITY_URL: https://community.antifilter.download/list/community.lst
+      ALLYOUNEED_URL: https://antifilter.download/list/allyouneed.lst
+      LIST_NAME: to_vpn
+      COMMENT: antifilter
+      RELEASE_TAG: antifilter-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Generate RSC files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+
+          python <<'PY'
+          import ipaddress
+          import pathlib
+          import urllib.request
+          import os
+
+          community_url = os.environ["COMMUNITY_URL"]
+          allyouneed_url = os.environ["ALLYOUNEED_URL"]
+          list_name = os.environ["LIST_NAME"]
+          comment = os.environ["COMMENT"]
+
+          out_dir = pathlib.Path("dist")
+          out_dir.mkdir(parents=True, exist_ok=True)
+
+          def fetch_lines(url: str) -> list[str]:
+              with urllib.request.urlopen(url, timeout=60) as resp:
+                  content = resp.read().decode("utf-8", errors="replace")
+              return content.splitlines()
+
+          def normalize_cidrs(lines: list[str]) -> list[str]:
+              result = []
+              seen = set()
+
+              for raw in lines:
+                  line = raw.strip()
+
+                  if not line:
+                      continue
+                  if line.startswith("#") or line.startswith(";"):
+                      continue
+
+                  # иногда в списках встречаются inline-комментарии
+                  for sep in (" #", " ;", "\t#", "\t;"):
+                      pos = line.find(sep)
+                      if pos != -1:
+                          line = line[:pos].strip()
+
+                  if not line:
+                      continue
+
+                  try:
+                      net = ipaddress.ip_network(line, strict=False)
+                      cidr = str(net)
+                  except ValueError:
+                      # пропускаем мусорные строки
+                      continue
+
+                  if cidr not in seen:
+                      seen.add(cidr)
+                      result.append(cidr)
+
+              # стабильный порядок: сначала IPv4, потом IPv6, внутри — по адресу/маске
+              def sort_key(value: str):
+                  net = ipaddress.ip_network(value, strict=False)
+                  return (net.version, int(net.network_address), net.prefixlen)
+
+              result.sort(key=sort_key)
+              return result
+
+          def write_rsc(lines: list[str], filename: str) -> None:
+              path = out_dir / filename
+              with path.open("w", encoding="utf-8", newline="\n") as f:
+                  for cidr in lines:
+                      f.write(
+                          f':do {{ /ip firewall address-list add list={list_name} address={cidr} comment={comment} }} on-error={{}}\n'
+                      )
+
+          community_lines = normalize_cidrs(fetch_lines(community_url))
+          allyouneed_lines = normalize_cidrs(fetch_lines(allyouneed_url))
+
+          write_rsc(community_lines, "community.rsc")
+          write_rsc(allyouneed_lines, "allyouneed.rsc")
+
+          summary = out_dir / "summary.txt"
+          summary.write_text(
+              "\n".join([
+                  f"community entries: {len(community_lines)}",
+                  f"allyouneed entries: {len(allyouneed_lines)}",
+              ]) + "\n",
+              encoding="utf-8"
+          )
+          PY
+
+      - name: Show generated files
+        shell: bash
+        run: |
+          ls -lah dist
+          echo "-----"
+          sed -n '1,5p' dist/community.rsc || true
+          echo "-----"
+          sed -n '1,5p' dist/allyouneed.rsc || true
+          echo "-----"
+          cat dist/summary.txt
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.RELEASE_TAG }}
+          name: Antifilter latest
+          body: |
+            Auto-generated MikroTik address-list files.
+
+            Sources:
+            - community.lst
+            - allyouneed.lst
+
+            Files:
+            - community.rsc
+            - allyouneed.rsc
+          prerelease: false
+          make_latest: true
+          files: |
+            dist/community.rsc
+            dist/allyouneed.rsc
+          overwrite_files: true
