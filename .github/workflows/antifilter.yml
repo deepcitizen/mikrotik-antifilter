@@ -103,7 +103,7 @@ jobs:
               with path.open("w", encoding="utf-8", newline="\n") as f:
                   for cidr in cidrs:
                       f.write(
-                          f':do {{ /ip firewall address-list add list={list_name} address={cidr} comment={comment} }} on-error={{}}\n'
+                          f':do {{ /ip firewall address-list add list={list_name} address={cidr} comment={comment} timeout=30d }} on-error={{}}\n'
                       )
 
           community = normalize(fetch_lines(community_url))
