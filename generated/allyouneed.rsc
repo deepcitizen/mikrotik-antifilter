@@ -13370,6 +13370,7 @@
 :do { /ip firewall address-list add list=to_vpn address=172.83.159.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=172.86.73.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=172.86.75.0/24 comment=antifilter timeout=30d } on-error={}
+:do { /ip firewall address-list add list=to_vpn address=172.86.76.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=172.86.80.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=172.86.87.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=172.86.113.0/24 comment=antifilter timeout=30d } on-error={}
