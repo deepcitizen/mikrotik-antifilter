@@ -3039,6 +3039,7 @@
 :do { /ip firewall address-list add list=to_vpn address=45.129.124.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=45.129.199.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=45.129.229.0/24 comment=antifilter timeout=30d } on-error={}
+:do { /ip firewall address-list add list=to_vpn address=45.130.16.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=45.130.18.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=45.130.41.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=45.130.42.0/23 comment=antifilter timeout=30d } on-error={}
@@ -5933,6 +5934,7 @@
 :do { /ip firewall address-list add list=to_vpn address=77.233.220.0/23 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=77.233.248.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=77.235.24.0/24 comment=antifilter timeout=30d } on-error={}
+:do { /ip firewall address-list add list=to_vpn address=77.235.41.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=77.235.50.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=77.235.62.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=77.238.2.0/24 comment=antifilter timeout=30d } on-error={}
@@ -5979,7 +5981,7 @@
 :do { /ip firewall address-list add list=to_vpn address=78.17.34.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=78.17.60.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=78.17.68.0/24 comment=antifilter timeout=30d } on-error={}
-:do { /ip firewall address-list add list=to_vpn address=78.17.70.0/24 comment=antifilter timeout=30d } on-error={}
+:do { /ip firewall address-list add list=to_vpn address=78.17.70.0/23 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=78.17.86.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=78.17.147.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=78.17.154.0/24 comment=antifilter timeout=30d } on-error={}
@@ -8494,6 +8496,7 @@
 :do { /ip firewall address-list add list=to_vpn address=95.179.200.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=95.179.224.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=95.179.232.0/24 comment=antifilter timeout=30d } on-error={}
+:do { /ip firewall address-list add list=to_vpn address=95.181.49.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=95.181.162.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=95.181.167.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=95.181.171.0/24 comment=antifilter timeout=30d } on-error={}
@@ -10827,6 +10830,7 @@
 :do { /ip firewall address-list add list=to_vpn address=144.31.218.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=144.31.222.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=144.31.229.0/24 comment=antifilter timeout=30d } on-error={}
+:do { /ip firewall address-list add list=to_vpn address=144.31.237.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=144.31.238.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=144.31.244.0/23 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=144.31.250.0/24 comment=antifilter timeout=30d } on-error={}
@@ -11070,6 +11074,7 @@
 :do { /ip firewall address-list add list=to_vpn address=146.212.74.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=147.15.17.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=147.18.65.0/24 comment=antifilter timeout=30d } on-error={}
+:do { /ip firewall address-list add list=to_vpn address=147.45.42.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=147.45.45.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=147.45.48.0/23 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=147.45.69.0/24 comment=antifilter timeout=30d } on-error={}
@@ -14353,6 +14358,7 @@
 :do { /ip firewall address-list add list=to_vpn address=185.98.53.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=185.98.54.0/23 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=185.98.60.0/24 comment=antifilter timeout=30d } on-error={}
+:do { /ip firewall address-list add list=to_vpn address=185.98.131.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=185.99.71.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=185.99.97.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=185.99.199.0/24 comment=antifilter timeout=30d } on-error={}
@@ -16513,7 +16519,7 @@
 :do { /ip firewall address-list add list=to_vpn address=198.135.184.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=198.136.49.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=198.143.156.0/24 comment=antifilter timeout=30d } on-error={}
-:do { /ip firewall address-list add list=to_vpn address=198.144.121.0/24 comment=antifilter timeout=30d } on-error={}
+:do { /ip firewall address-list add list=to_vpn address=198.144.120.0/23 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=198.144.179.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=198.148.92.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=198.148.174.0/24 comment=antifilter timeout=30d } on-error={}
@@ -17877,8 +17883,7 @@
 :do { /ip firewall address-list add list=to_vpn address=217.60.195.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=217.60.199.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=217.61.43.0/24 comment=antifilter timeout=30d } on-error={}
-:do { /ip firewall address-list add list=to_vpn address=217.61.208.0/23 comment=antifilter timeout=30d } on-error={}
-:do { /ip firewall address-list add list=to_vpn address=217.61.211.0/24 comment=antifilter timeout=30d } on-error={}
+:do { /ip firewall address-list add list=to_vpn address=217.61.208.0/22 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=217.61.212.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=217.64.195.0/24 comment=antifilter timeout=30d } on-error={}
 :do { /ip firewall address-list add list=to_vpn address=217.65.5.0/24 comment=antifilter timeout=30d } on-error={}
